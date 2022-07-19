@@ -73,7 +73,7 @@
 			function update() {
 				positionmove = positionmove += speed;
 				moveBoxTo(positionmove);
-				if (positionmove >= 1000) {
+				if (positionmove >= boardWidth) {
      				// then make speed negative to change direction
 					speed = -speed;
 					}	
@@ -90,7 +90,7 @@
 			function handleBoxClick() {
 				positionmove = 0;
 				if (speed < 0) {
-					positionmove = 1000;
+					positionmove = boardWidth;
 				}
 				// your code to increase the points variable by 1
 				points = points + 1;
@@ -98,11 +98,11 @@
 
 				// your code to increase the speed of Positon by 3 or decreases by 3 
 				if (speed >= 0) {
-					speed = speed += 3;
+					speed = speed + 3;
 					
 					}
 				 else if (speed < 0){
-					speed = speed -= 3;
+					speed = speed - 3;
 				 }
 			};
 		})();
