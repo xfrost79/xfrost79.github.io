@@ -20,11 +20,13 @@ var level01 = function (window) {
                 { "type": "sawblade", "x": 600, "y": groundY },
                 { "type": "sawblade", "x": 800, "y": groundY },
                 { "type": "flamebolt", "x": 900, "y": groundY },
-                { "type": "enemy", "x": 700, "y": groundY },
-                { "type": "reward", "x": 2000, "y": groundY - 60},
+                { "type": "enemy", "x": 700, "y": groundY-50 },
+                { "type": "enemy", "x": 400, "y": groundY-50 },
+                { "type": "reward", "x": 950, "y": groundY-70 },
+                
             ]
         };
-                for (var i = 0; i < levelData.length; i++)  {
+                for (var i = 0; i < levelData.gameItems.length; i++)  {
                 var GameItemObject = levelData.gameItems[i];
                 var x = GameItemObject.x;
                 var y = GameItemObject.y;
@@ -32,6 +34,15 @@ var level01 = function (window) {
                 
                 if (type === "sawblade"){
                     createSawBlade(x, y);
+                }
+                if (type === "flamebolt"){
+                    createMyObstacle(x, y);
+                }
+                if (type === "enemy"){
+                    createEnemy(x, y);
+                }
+                if (type === "reward"){
+                    createReward(x, y);
                 }
                 
                 } 
