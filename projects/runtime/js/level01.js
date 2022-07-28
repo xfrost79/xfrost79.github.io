@@ -18,9 +18,26 @@ var level01 = function (window) {
             "gameItems": [
                 { "type": "sawblade", "x": 400, "y": groundY },
                 { "type": "sawblade", "x": 600, "y": groundY },
-                { "type": "sawblade", "x": 900, "y": groundY },
+                { "type": "sawblade", "x": 800, "y": groundY },
+                { "type": "flamebolt", "x": 900, "y": groundY },
+                { "type": "enemy", "x": 700, "y": groundY },
+                { "type": "reward", "x": 2000, "y": groundY - 60},
             ]
         };
+                for (var i = 0; i < levelData.length; i++)  {
+                var GameItemObject = levelData.gameItems[i];
+                var x = GameItemObject.x;
+                var y = GameItemObject.y;
+                var type = GameItemObject.type;
+                
+                if (levelData.type === null){
+                    createSawBlade(x, y);
+                }
+               
+
+    } 
+
+
         window.levelData = levelData;
         // set this to true or false depending on if you want to see hitzones
         game.setDebugMode(true);
@@ -42,16 +59,16 @@ var level01 = function (window) {
         }
         //call createSawblade 3 times
       
-        createSawBlade();
-        createSawBlade();
-        createSawBlade();
+        //createSawBlade();
+       //createSawBlade();
+        //createSawBlade();
 
         function createMyObstacle(x,y)  {
             var hitZoneSize = 35;
             var damageFromObstacle = 30;
             var flameBoltHitZone = game.createObstacle(hitZoneSize, damageFromObstacle);
-            flameBoltHitZone.x = Math.random()*500 + 400;
-            flameBoltHitZone.y = Math.random()*100 + 230;
+            flameBoltHitZone.x = Math.random()*500 + 900;
+            flameBoltHitZone.y = Math.random()*100 + 280;
             game.addGameItem(flameBoltHitZone); 
             var obstacleImage = draw.bitmap('img/flamebolt.png');
             obstacleImage.scaleX = .25;
@@ -60,7 +77,8 @@ var level01 = function (window) {
             obstacleImage.y = -135;
             flameBoltHitZone.addChild(obstacleImage);
             };
-            createMyObstacle();
+
+        //createMyObstacle();
         
         function createEnemy(x,y){
             var enemy = game.createGameItem('enemy',25);
@@ -68,8 +86,8 @@ var level01 = function (window) {
             redSquare.x = -25;
             redSquare.y = -25;
             enemy.addChild(redSquare);
-            enemy.x = 900;
-            enemy.y = groundY-50;
+            enemy.x = x;
+            enemy.y = y;
             game.addGameItem(enemy);
             enemy.velocityX = -1;
             enemy.rotationalVelocity = 10;
@@ -85,9 +103,36 @@ var level01 = function (window) {
                 game.increaseScore(100)
                 enemy.shrink();
             };
-        }   createEnemy();
-       
+        }   
+           //createEnemy(400,groundY-20);
+            //createEnemy(800,groundY-60);
+            //createEnemy(1200,groundY-50);
         
+            function createReward(x,y){
+                var reward = game.createGameItem('reward',25);
+                var blueSquare = draw.rect(50,50,'blue');
+                blueSquare.x = -25;
+                blueSquare.y = -25;
+                reward.addChild(blueSquare);
+                reward.x = x;
+                reward.y = y;
+                game.addGameItem(reward);
+                reward.velocityX = -1;
+                reward.rotationalVelocity = 10;
+
+                reward.onPlayerCollision = function() {
+                    console.log('The reward has hit Halle');
+                    game.changeIntegrity(60)
+                    reward.fadeOut();
+                };
+
+                
+            }
+            //createReward(800,groundY-120);
+    
+
+
+
         // DO NOT EDIT CODE BELOW HERE
     }
 };
