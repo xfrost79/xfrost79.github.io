@@ -16,7 +16,7 @@ var level01 = function (window) {
             "number": 1, 
             "speed": -3,
             "gameItems": [
-                { "type": "sawblade", "x": 400, "y": groundY },
+                { "type": "sawblade", "x": 100, "y": groundY },
                 { "type": "sawblade", "x": 600, "y": groundY },
                 { "type": "sawblade", "x": 800, "y": groundY },
                 { "type": "flamebolt", "x": 900, "y": groundY },
@@ -30,12 +30,11 @@ var level01 = function (window) {
                 var y = GameItemObject.y;
                 var type = GameItemObject.type;
                 
-                if (levelData.type === null){
+                if (type === "sawblade"){
                     createSawBlade(x, y);
                 }
-               
-
-    } 
+                
+                } 
 
 
         window.levelData = levelData;
