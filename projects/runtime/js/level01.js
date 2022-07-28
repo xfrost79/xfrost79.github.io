@@ -10,7 +10,7 @@ var level01 = function (window) {
         var groundY = game.groundY;
 
         // this data will allow us to define all of the
-        // behavior of our game
+        // behavior of our game and looping
         var levelData = {
             "name": "Robot Romp",
             "number": 1, 
