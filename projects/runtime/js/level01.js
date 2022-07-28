@@ -22,7 +22,7 @@ var level01 = function (window) {
                 { "type": "flamebolt", "x": 900, "y": groundY },
                 { "type": "enemy", "x": 700, "y": groundY-50 },
                 { "type": "enemy", "x": 400, "y": groundY-50 },
-                { "type": "reward", "x": 950, "y": groundY-70 },
+                { "type": "reward", "x": 1050, "y": groundY-150 },
                 
             ]
         };
@@ -135,7 +135,7 @@ var level01 = function (window) {
                     game.changeIntegrity(60)
                     reward.fadeOut();
                 };
-
+               
                 
             }
             //createReward(800,groundY-120);
